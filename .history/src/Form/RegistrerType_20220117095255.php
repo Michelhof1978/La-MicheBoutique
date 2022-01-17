@@ -44,7 +44,6 @@ class RegistrerType extends AbstractType
                 
                 'second_options' => ['label'=>'Resaisir Mot de Passe',
                 'attr' => ['placeholder'=>'Resaisir Votre Mot de Passe']],
-            ])
                
                 //passwordType, permet de mettre des petits points ds le champs au lieu de voir les caractères
 //RepeatedType: permets  de demander à symfony que ,j'ai besoin pour une même propriété, 2  champs différents (mot de passe et retaper mot de passe et qui doivent avoir exactement tous les 2 le même contenu)

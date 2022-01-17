@@ -1,0 +1,9 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mon Compte-La Miche Boutique{% endblock %}
+
+{% block content %}
+<h1>Mon Compte</h1>
+Bienvenue 
+{{dump (app)}} {#dump permet  d'explorer la variable app, app va permettre à accéder à l'utilisateur,request#}
+{% endblock %}

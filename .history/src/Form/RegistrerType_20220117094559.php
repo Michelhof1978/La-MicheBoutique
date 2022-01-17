@@ -39,18 +39,14 @@ class RegistrerType extends AbstractType
                 'invalid_message' => 'Les mots de passe doivent être identiques',
                 'required' => true,//ce champs est requie, j'ai besoins de le rendre obligatoire
                 'label' => 'Votre Mot De Passe',
-                'first_options' => ['label'=>'Mot de Passe',
-                'attr' => ['placeholder'=>'Votre Mot de Passe']],
-                
-                'second_options' => ['label'=>'Resaisir Mot de Passe',
-                'attr' => ['placeholder'=>'Resaisir Votre Mot de Passe']],
-            ])
-               
+                'first_options' => ['label'=>'Mot de Passe'],
+                'second_options' => ['label'=>'Resaisir Mot de Passe'],
+                'attr' => ['placeholder'=>'Email']])
                 //passwordType, permet de mettre des petits points ds le champs au lieu de voir les caractères
 //RepeatedType: permets  de demander à symfony que ,j'ai besoin pour une même propriété, 2  champs différents (mot de passe et retaper mot de passe et qui doivent avoir exactement tous les 2 le même contenu)
            
 
-            
+            ])
            
                 /* ->add('password_confirm', PasswordType::class, [
                     'label' => 'Reconfirmez Votre Mot De Passe', 
