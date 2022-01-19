@@ -1,0 +1,10 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mon Compte-La Miche Boutique{% endblock %}
+
+{% block content %}
+<h1>Mon Compte</h1>
+Bienvenue {{app.user.firstname}} à votre compte. {# app va permettre à accéder à l'utilisateur,request et aux sessions#}
+
+<a href="{{ path ('account_password')}}">Modifie mon mot de passe</a> <br
+{% endblock %}
