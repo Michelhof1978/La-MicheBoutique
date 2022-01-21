@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Nos produits - La Miche Boutique{% endblock %}
+
+{% block content %}
+
+<div class="row">
+   <div class="col-md-3">
+      <h1>Filtrer</h1>
+   </div>
+
+   <div class="col-md-9">
+      <h3>Nos produits</h3>
+
+<div class="row product-container">
+{% for product in products %} {#boucle for qui initialise la variable product pour récupérer tous les produits#}
+  <div class="col-md-4">{#pour afficher les articles plus jolie#}
+     <div class="product-item text-center">  
+     <a href="{{ path('product', {'slug' : product.slug} ) }}"><img src="/uploads/{{ product.illustration}}" alt=""{{ product.name }} class="img-fluid">
+        <h5>{{ product.name }}</h5>
+        <span class="product-subtitle">{{ product.subtitle}}</span>
+        
+        <span class="product-price">{{ (product.price / 100 ) | number_format(2,',', '.')}} €<span> {#format affichage prix,(2,',', '.') je veux remplacer le point par une virgule#}
+     </div>
+    </div> 
+
+{% endfor %}
+ </div> 
+   </div>
+</div>
+
+
+{% endblock %}

@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ product.name }} - La Miche Boutique{% endblock %}
+
+{% block content %} {#pour afficher les articles quand on clique dessus#}
+
+<div class="row">
+
+    <div class"col-md-4">
+         <img src="/uploads/{{ product.illustration }}" alt"{{ product.name }}" class="img.fluid">
+    </div>
+
+    <div class"col-md-8">
+         <h3>{{ product.name }}</h3>
+         <p>{{ }}
+    </div>
+
+{{ dump(product) }}
+{% endblock %}
