@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ product.name }} - La Miche Boutique{% endblock %}
+
+{% block content %} {#pour afficher les articles quand on clique dessus#}
+{{ form_start(form) }}
+    <div class="my-custom-class-for-errors">
+        {{ form_errors(form) }}
+    </div>
+
+    <div class="row">
+        <div class="col">
+            {{ form_row(form.task) }}
+        </div>
+        <div class="col" id="some-custom-id">
+            {{ form_row(form.dueDate) }}
+        </div>
+    </div>
+{{ form_end(form) }}
+
+<div class="row">
+
+    <div class"col-md-5 ">
+         <img src="/uploads/{{ product.illustration }}" alt="{{ product.name }}" class="img-fluid">
+    </div>
+
+    <div class"col-md-7 my-auto">
+         <h3>{{ product.name }}</h3>
+         <p>{{ product.subtitle }}</p>
+        <span class="product-page-price"> {{ (product.price / 100 ) | number_format(2,',', '.')}} €</span>
+         <hr>
+         <p>
+         {{ product.description }}
+         </p>
+         <a href="" class="btn btn-primary">Ajouter au panier</a>
+
+        
+
+    </div>
+
+</div>
+{% endblock %}

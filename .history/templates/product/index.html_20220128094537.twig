@@ -1,0 +1,107 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Nos produits - La Miche Boutique{% endblock %}
+
+{% block content %}
+
+<div class="row">
+   <div class="col-md-3">
+      <h3>Filtrer</h3>
+      
+
+   </div>
+
+   <div class="col-md-9">
+      <h3>Nos produits</h3>
+
+     
+	<div class='mx-auto p-4 mt-4 text-center container bg-white'>
+		<h2>Recherche d'annonces</h2>
+		<div class='row'>
+			<div class='mx-auto col-10'>
+
+				<h3 class="mt-4">Recherche par catégorie</h3>
+				<form method="POST" class="search_form bg-light mx-auto p-4">
+					<div class='row'>
+						<div class="mx-auto mb-4 col-12 col-lg-6">
+							<label for="category">Catégorie:
+							</label>
+							<select id="category" name="category">
+								<option value="default" disabled>--Sélectionnez une catégorie--</option>
+								{% for category in categories %}
+									<option value="{{ category.name }}">{{ category.name }}</option>
+								{% endfor %}
+							</select>
+						</div>
+						<div class="mx-auto mb-4 col-sm-12 col-md-12 col-lg-6">
+							<label for="city">Ville:</label>
+							<input type="text" id="city" name="city">
+						</div>
+					</div>
+
+					{% if errors is defined %}
+						{% for error in errors %}
+							<p>{{error}}
+							</p>
+						{% endfor %}
+					{% endif %}
+					<input type="submit" value="Search">
+				</form>
+			</div>
+
+			<div class='mx-auto col-10'>
+				{% if offers %}
+					<h3 class="mt-4">Résultats:</h3>
+					<div class="row">
+						{% for offer in offers %}
+
+							<div class="offer bg-light border border-muted mx-auto p-4 mb-4 text-left col-12 col-lg-5">
+								<a href="/offerings/show?id={{offer.id}}" class="offer-title-link text-decoration-none">
+									<h4 class="text-primary">{{offer.title}}</h4>
+								</a>
+								<mark class='px-4 py-2 rounded mb-2 d-inline-block'>{{offer.category}}</mark>
+								<p class="mb-2 font-italic">{{offer.firstname ~ " " ~ offer.lastname}}
+								</p>
+								<a href="/offerings/show?id={{offer.id}}">Détails</a>
+							</div>
+
+
+						{% endfor %}
+					</div>
+				{% endif %}
+
+				{% if empty is defined %}
+
+					<p class='alert alert-warning mt-4'>No offers available for this request.</p>
+
+				{% endif %}
+
+
+			</div>
+
+		</div>
+
+
+	</div>
+
+
+
+<div class="row product-container">
+{% for product in products %} {#boucle for qui initialise la variable product pour récupérer tous les produits#}
+  <div class="col-md-4">
+     <div class="product-item text-center">  
+     <a href="{{ path('product', {'slug' : product.slug} ) }}"><img src="/uploads/{{ product.illustration}}" alt=""{{ product.name }} class="img-fluid">
+        <h5>{{ product.name }}</h5>
+        <span class="product-subtitle">{{ product.subtitle}}</span>
+        
+        <span class="product-price">{{ (product.price / 100 ) | number_format(2,',', '.')}} €<span> {#format affichage prix,(2,',', '.') je veux remplacer le point par une virgule#}
+     </div>
+    </div> 
+
+{% endfor %}
+ </div> 
+   </div>
+</div>
+
+
+{% endblock %}

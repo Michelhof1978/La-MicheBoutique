@@ -1,0 +1,18 @@
+{% extends "base.html.twig" %}
+{% block body %}
+<h1>Rechercher </h1>
+    {% for search in searchs %}
+        <div>
+            
+            <p>Catégorie : {{ advert.category }}
+            <p>Produits : {{ advert.prod }}</p>
+             
+                  <div class="col-12">
+                 <img class="img-fluid rounded" src="{{ advert.owner.photo.url }}">
+             </div>
+            {# Lien vers la fiche de l'annonce : #}
+            <a href="{{ path("advert_show", {id: advert.id}) }}">Voir la fiche</a>
+        </div>
+    {% else %}
+        Aucune annnonce correspondante à votre recherche trouvée.
+    {% endfor %}
