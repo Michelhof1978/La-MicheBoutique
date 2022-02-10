@@ -3,8 +3,6 @@
 namespace App\Controller;
 
 use App\Classe\Cart;
-use App\Entity\Product;
-use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -13,10 +11,7 @@ class CartController extends AbstractController
 {
     private $entityManager;
 
-    public function __construct(EntityManagerInterface $entityManger){
-
-        $this->entityManager = $entityManger;
-    }
+    public function __construct(entity)
     /**
      * @Route("/mon-panier", name="cart")
      * 
@@ -26,23 +21,20 @@ class CartController extends AbstractController
         
         //dd($cart->get());
         $cartComplete = [];
-        foreach ($cart->get() as $id => $quantity) {
+        foreach ($cart->() as $id => $quantity) {
             $cartComplete[] = [
-                'product' => $this -> entityManager -> getRepository(Product::class)->findOneById($id),
+                'product' => xxxx
                 'quantity' => $quantity
 
-            ];
+            ]
 
-            }
+        }
 
-            dd($cartComplete);
-        
         return $this->render('cart/index.html.twig',[
             'cart' => $cart->get()//passer en variable pour que twig puisse afficher
         ]);
         
     }
-
 
 
     /**

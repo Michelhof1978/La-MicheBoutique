@@ -9,19 +9,19 @@ class Cart {
     private $session;
 
     public function __construct(SessionInterface $session) //dés que ma classe sera appelé, la fonction constructeur sera initialisé
-    {                          //injection de dépendance de SessionInterface ds la variable $session
+    {                          //injection de dépendance de SessionInterface ds la var
         $this->session=$session;
     }
 
     public function add($id){
        
-       $cart = $this->session->get('cart',[]);//chercher la session cart et tu me renvois un tableau
+       $cart = $this->session->get('cart',[]);
 
-       if (!empty($cart[$id])){//si tu as bien un produit ds mon panier, incrémente X fois le nombre d'articles
+       if (!empty($cart[$id])){
            $cart[$id]++;
 
        } else {
-           $cart[$id] = 1;//prends mon car ID et tu mets 1
+           $cart[$id] = 1;
        }
        
         $this->session->set('cart',$cart);

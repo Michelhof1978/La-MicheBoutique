@@ -21,7 +21,7 @@ class Cart {
            $cart[$id]++;
 
        } else {
-           $cart[$id] = 1;//prends mon car ID et tu mets 1
+           $cart[$id] = 1;
        }
        
         $this->session->set('cart',$cart);

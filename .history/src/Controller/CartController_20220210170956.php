@@ -3,7 +3,6 @@
 namespace App\Controller;
 
 use App\Classe\Cart;
-use App\Entity\Product;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -26,23 +25,20 @@ class CartController extends AbstractController
         
         //dd($cart->get());
         $cartComplete = [];
-        foreach ($cart->get() as $id => $quantity) {
+        foreach ($cart->() as $id => $quantity) {
             $cartComplete[] = [
-                'product' => $this -> entityManager -> getRepository(Product::class)->findOneById($id),
+                'product' => $this-> entityManager -> getRepository(Product::class)
                 'quantity' => $quantity
 
-            ];
+            ]
 
-            }
+        }
 
-            dd($cartComplete);
-        
         return $this->render('cart/index.html.twig',[
             'cart' => $cart->get()//passer en variable pour que twig puisse afficher
         ]);
         
     }
-
 
 
     /**

@@ -28,7 +28,7 @@ class CartController extends AbstractController
         $cartComplete = [];
         foreach ($cart->get() as $id => $quantity) {
             $cartComplete[] = [
-                'product' => $this -> entityManager -> getRepository(Product::class)->findOneById($id),
+                'product' => $this -> entityManager -> getRepository(Product::class)->findOneBy($id),
                 'quantity' => $quantity
 
             ];
